@@ -21,7 +21,9 @@ export default function RootLayout({
 }) {
   const navbar: React.ComponentProps<typeof Layout>["navbar"] = {
     logo: {
-      url: "logo_head.png",
+      url: "logo.svg",
+      width: 25,
+      height: 25,
     },
     links: [
       {
@@ -29,8 +31,8 @@ export default function RootLayout({
         label: "Dashboard",
       },
       {
-        to: "/issues",
-        label: "Issues",
+        to: "/coupons",
+        label: "Coupons",
       },
     ],
   };
