@@ -14,6 +14,29 @@ datasource db {
     relationMode = "prisma"
 }
 
+enum VoucherStatus {
+    ACTIVE
+    EXPIRED
+    USED
+}
+
+enum DiscountType {
+    FIXED
+    PERCENTAGE
+}
+
+model Voucher {
+    id           Int           @id @default(autoincrement())
+    voucherId    String        @db.VarChar(12)
+    startDate    DateTime
+    expiryDate   DateTime
+    createdAt    DateTime      @default(now())
+    description  String        @db.Text
+    discountType DiscountType
+    value        Int
+    status       VoucherStatus
+}
+
 model Post {
     id        Int      @id @default(autoincrement())
     name      String

@@ -31,8 +31,12 @@ export default function RootLayout({
         label: "Dashboard",
       },
       {
-        to: "/coupons",
-        label: "Coupons",
+        to: "/uploads",
+        label: "Upload",
+      },
+      {
+        to: "/vouchers",
+        label: "Voucher",
       },
     ],
   };
