@@ -16,7 +16,7 @@ const Navbar: React.FC<IProps> = ({ logo, links }) => {
   const currentPath = usePathname();
 
   return (
-    <nav className="mb-5 flex h-16 items-center space-x-4 border-b px-5">
+    <nav className="flex h-16 items-center space-x-4 border-b px-5">
       <Logo {...logo} />
 
       <ul className="flex space-x-4">

@@ -1,6 +1,5 @@
 import React from "react";
-import Text from "~/components/atoms/Text";
-import Table from "~/components/organisms/Table";
+import TableWithSearch from "~/components/organisms/TableWithSearch";
 
 interface Row {
   value: string;
@@ -13,19 +12,58 @@ const VoucherPage = () => {
       voucherId: "voucher123",
       value: "200",
     },
+    {
+      voucherId: "voucher123",
+      value: "200",
+    },
+    {
+      voucherId: "voucher123",
+      value: "200",
+    },
+    {
+      voucherId: "voucher123",
+      value: "200",
+    },
+    {
+      voucherId: "voucher123",
+      value: "200",
+    },
+    {
+      voucherId: "voucher123",
+      value: "200",
+    },
+    {
+      voucherId: "voucher123",
+      value: "200",
+    },
   ];
 
-  const columns = Object.keys(rows[0]) as keyof Row;
+  const columns = Object.keys(rows[0]!) as unknown as (keyof Row)[];
 
   return (
-    <section>
-      <header>
-        <Text variant="title">Vouchers</Text>
-      </header>
-
-      <section>
-        <Table<> />
-      </section>
+    <section className="h-screen bg-gray-50 p-4">
+      <div className="mx-auto bg-white">
+        <TableWithSearch<Row>
+          table={{ rows, columns }}
+          actions={[
+            {
+              type: "button",
+              props: {
+                icon: { type: "io5", icon: "add" },
+                label: "Add",
+              },
+            },
+            {
+              type: "filter",
+              props: {
+                type: "button",
+                label: "Filter",
+                icon: { type: "rx", icon: "caretDown" },
+              },
+            },
+          ]}
+        />
+      </div>
     </section>
   );
 };

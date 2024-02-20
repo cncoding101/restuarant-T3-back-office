@@ -6,13 +6,17 @@ interface IProps<T> {
   columns: (keyof T)[];
 }
 
-const Table = <T extends Record<string, keyof T>>(props: IProps<T>) => {
+const Table = <T extends object>(props: IProps<T>) => {
   const { rows, columns } = props;
 
   return (
-    <table className="min-w-full table-auto">
+    <table className="w-full table-auto">
       <thead>
-        <TableRow type="header" values={columns as string[]} />
+        <TableRow
+          type="header"
+          values={columns as string[]}
+          className="bg-gray-50 text-left uppercase"
+        />
       </thead>
       <tbody>
         {rows.map((row, rowIndex) => (
@@ -20,6 +24,7 @@ const Table = <T extends Record<string, keyof T>>(props: IProps<T>) => {
             type="body"
             key={rowIndex}
             values={columns.map((column) => row[column]) as string[]}
+            className="border-b"
           />
         ))}
       </tbody>

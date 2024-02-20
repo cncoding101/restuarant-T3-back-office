@@ -1,4 +1,3 @@
-import Head from "next/head";
 import type { ReactNode } from "react";
 
 import Navbar from "~/components/organisms/Navbar";
@@ -10,14 +9,14 @@ interface IProps {
 
 const Layout: React.FC<IProps> = ({ navbar, children }) => {
   return (
-    <div className="flex h-full w-full flex-col">
+    <div className="flex h-screen flex-col">
       {/* navbar */}
-      <header>
+      <header className="sticky top-0">
         <Navbar {...navbar} />
       </header>
 
       {/* content */}
-      <main>{children}</main>
+      <main className="w-full overflow-y-auto">{children}</main>
     </div>
   );
 };

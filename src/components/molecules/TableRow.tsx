@@ -10,14 +10,19 @@ const ELEMENTS = {
 interface IProps {
   type: Type;
   values: string[];
+  className?: string;
 }
 
-const TableRow: React.FC<IProps> = ({ type, values }) => {
+const TableRow: React.FC<IProps> = ({ type, values, className = "" }) => {
   const Component = values.map((value, index) =>
-    React.createElement(ELEMENTS[type], { key: index }, value),
+    React.createElement(
+      ELEMENTS[type],
+      { key: index, className: "p-4" },
+      value,
+    ),
   );
 
-  return <tr>{Component}</tr>;
+  return <tr className={className}>{Component}</tr>;
 };
 
 export default TableRow;
