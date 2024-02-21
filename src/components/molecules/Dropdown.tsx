@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import Text from "~/components/atoms/Text";
 import Icon from "~/components/atoms/Icon";
 import Button from "~/components/atoms/Button";
 
@@ -15,9 +16,10 @@ interface IProps {
   type: DropdownType;
   label: string;
   icon: React.ComponentProps<typeof Icon>;
+  items: string[];
 }
 
-const Dropdown: React.FC<IProps> = ({ type, label, icon }) => {
+const Dropdown: React.FC<IProps> = ({ type, label, icon, items }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = (e: React.MouseEvent) => {
@@ -57,7 +59,7 @@ const Dropdown: React.FC<IProps> = ({ type, label, icon }) => {
       Component = (
         <Button variant="primary" onClick={handleClick}>
           <Icon {...icon} />
-          {label}
+          <Text variant="label">{label}</Text>
         </Button>
       );
       break;
@@ -68,8 +70,18 @@ const Dropdown: React.FC<IProps> = ({ type, label, icon }) => {
       {Component}
 
       {isOpen && (
-        <div className="absolute rounded-md bg-white p-4 shadow-lg ring-1 ring-black ring-opacity-5">
-          hello world!
+        <div className="absolute w-max rounded-md bg-white p-4 shadow-lg ring-1 ring-black ring-opacity-5">
+          <ul className="space-y-2">
+            {items.map((item, index) => (
+              <li className="space-x-2" key={index}>
+                <input
+                  type="checkbox"
+                  className="text-primary-600 focus:ring-primary-500 h-4 w-4 rounded border-gray-300 bg-gray-100 focus:ring-1"
+                />
+                <Text variant="label">{item}</Text>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>

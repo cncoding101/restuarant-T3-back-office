@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import TableWithSearch from "~/components/organisms/TableWithSearch";
 
@@ -37,7 +39,6 @@ const VoucherPage = () => {
       value: "200",
     },
   ];
-
   const columns = Object.keys(rows[0]!) as unknown as (keyof Row)[];
 
   return (
@@ -51,6 +52,10 @@ const VoucherPage = () => {
               props: {
                 icon: { type: "io5", icon: "add" },
                 label: "Add",
+                variant: "primary",
+                onClick: () => {
+                  console.log("hi");
+                },
               },
             },
             {
@@ -59,6 +64,7 @@ const VoucherPage = () => {
                 type: "button",
                 label: "Filter",
                 icon: { type: "rx", icon: "caretDown" },
+                items: ["filter1", "filter2", "filter3"],
               },
             },
           ]}

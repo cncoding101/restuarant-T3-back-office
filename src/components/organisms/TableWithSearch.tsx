@@ -31,16 +31,16 @@ const TableWithSearch = <T extends object>(props: IProps<T>) => {
     <>
       {/* header */}
       <div className="flex items-center p-4">
-        <form className="flex w-1/2 items-center">
-          <Search />
-        </form>
-
         {/* actions */}
         {actions && (
-          <div className="flex grow items-stretch justify-end space-x-4">
+          <div className="flex grow items-stretch space-x-4">
             {actions.map((action, index) => createActionElement(action, index))}
           </div>
         )}
+
+        <form className="flex w-1/2 items-center justify-end">
+          <Search />
+        </form>
       </div>
 
       {/* content */}

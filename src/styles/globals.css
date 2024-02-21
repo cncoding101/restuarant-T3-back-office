@@ -12,6 +12,8 @@ button {
 
 a,
 a > label,
+button > label,
+input,
 button {
   &:hover {
     cursor: pointer;

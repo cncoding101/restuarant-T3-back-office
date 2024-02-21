@@ -7,18 +7,14 @@ import Button from "~/components/atoms/Button";
 
 interface IProps {
   icon: React.ComponentProps<typeof Icon>;
+  onClick: React.ComponentProps<typeof Button>["onClick"];
+  variant?: React.ComponentProps<typeof Button>["variant"];
   label?: string;
 }
 
-const ButtonIcon: React.FC<IProps> = ({ icon, label }) => {
+const ButtonIcon: React.FC<IProps> = ({ icon, onClick, variant, label }) => {
   return (
-    <Button
-      variant="primary"
-      onClick={() => {
-        console.log("hello world!");
-      }}
-      className="bg-black"
-    >
+    <Button variant={variant} onClick={onClick}>
       <Icon {...icon} />
       {label && <Text variant="label">{label}</Text>}
     </Button>

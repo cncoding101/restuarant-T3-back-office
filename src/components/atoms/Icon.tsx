@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
 import { useMemo } from "react";
-import type { IconType } from "react-icons/lib";
 
 type Type = keyof typeof REACT_ICONS;
 type Variant =
@@ -10,7 +9,8 @@ type Variant =
   | Fa6Variant
   | SiVariant
   | MdVariant
-  | RxVariant;
+  | RxVariant
+  | BsVariant;
 type IoVariant = keyof typeof REACT_ICONS.io;
 type Io5Variant = keyof typeof REACT_ICONS.io5;
 type FaVariant = keyof typeof REACT_ICONS.fa;
@@ -18,6 +18,7 @@ type Fa6Variant = keyof typeof REACT_ICONS.fa6;
 type SiVariant = keyof typeof REACT_ICONS.si;
 type MdVariant = keyof typeof REACT_ICONS.md;
 type RxVariant = keyof typeof REACT_ICONS.rx;
+type BsVariant = keyof typeof REACT_ICONS.bs;
 
 interface IProps {
   type: Type;
@@ -53,6 +54,9 @@ const REACT_ICONS = {
   },
   rx: {
     caretDown: "RxCaretDown",
+  },
+  bs: {
+    threeDots: "BsThreeDots",
   },
 } as const;
 
@@ -118,6 +122,14 @@ const Icon: React.FC<IProps> = ({ icon, type, color, size, className }) => {
         return dynamic(() =>
           import("react-icons/rx").then(
             (icons) => icons[REACT_ICONS.rx[icon as RxVariant]],
+          ),
+        );
+
+      case "bs":
+        if (!REACT_ICONS.bs[icon as BsVariant]) return;
+        return dynamic(() =>
+          import("react-icons/bs").then(
+            (icons) => icons[REACT_ICONS.bs[icon as BsVariant]],
           ),
         );
     }
